@@ -8,7 +8,7 @@ const mailTrapMailProvider = new MailTrapMailProvider();
 
 const createUserUseCase = new CreateUserUseCase(
     fakeUsersRepository,
-    mailTrapMailProvider
+    mailTrapMailProvider,
 )
 
 const createUserController = new CreateUserController(

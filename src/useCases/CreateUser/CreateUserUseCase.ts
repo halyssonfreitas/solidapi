@@ -10,22 +10,25 @@ export class CreateUserUseCase {
 
     constructor(
         usersReporitory: IUsersRepository,
-        mailProvider: IMailProvider
+        mailProvider: IMailProvider,
     ) {
         this.usersReporitory = usersReporitory
         this.mailProvider = mailProvider
     }
-
+    
     async execute(data: ICreateUserRequestDTO) {
         const userAlreadyExists = await this.usersReporitory.findyByEmail(data.email)
-
+        
         if (userAlreadyExists) {
             throw new Error("User already exists.");
         }
 
         const user = new User(data)
-
+        
         await this.usersReporitory.save(user);
+
+
+        
 
         await this.mailProvider.sendMail({
             to: {
