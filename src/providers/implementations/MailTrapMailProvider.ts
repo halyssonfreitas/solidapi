@@ -19,10 +19,9 @@ export class MailTrapMailProvider implements IMailProvider {
     }
 
 
-    sendMail(message: IMessege): Promise<void> {
-        throw new Error('Method not implemented.');
+    async sendMail(message: IMessege): Promise<void> {
 
-        this.transport.sendMail({
+        await this.transport.sendMail({
             to: {
                 name : message.to.name,
                 address : message.to.email
