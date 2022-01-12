@@ -5,7 +5,7 @@ interface IAddress {
 }
 
 
-interface IMessege {
+export interface IMessege {
     from: IAddress
     to: IAddress
     subject: string
